@@ -71,7 +71,6 @@ Here we want to compute the average value of the number of steps over all the ac
 #dev.new()
 #png('plot_meanStepsPerPeriod.png')
 AvgStepsPerTimePeriod <- aggregate(list(NbSteps = tbl_activityDF_Clean$steps), by = list(TimeInterval=tbl_activityDF_Clean$TimeInterval),FUN = mean)
-print(AvgStepsPerTimePeriod)
 AvgStepsPerTimePeriod <- aggregate(list(NbSteps = tbl_activityDF_Clean$steps), by = list(TimeInterval=tbl_activityDF_Clean$TimeInterval),FUN = mean)
 with(AvgStepsPerTimePeriod,plot(NbSteps ~TimeInterval, xlab="Time interval", ylab="Nb of steps", type="l", main="total number of steps across day time"))
 #dev.off()
@@ -118,7 +117,6 @@ Then we compute the sum of the new *steps* column by activity date, as we did at
 
 ```{r NewSumbyActivityDate}
 TotalStepsPerDayNew <- aggregate(list(stepsUpdated = MergeDF$steps), by = list(ActivityDate=MergeDF$ActivityDate),FUN = sum)
-print(TotalStepsPerDayNew)
 #dev.new()
 hist(TotalStepsPerDayNew$stepsUpdated,breaks=seq(0,22000,1000),col="blue",main="Histogram for total number of steps by date", xlab="Nb of steps")
 print(summary(TotalStepsPerDayNew)) # the values of mean and median are equal 
